@@ -28,20 +28,4 @@ class SegwitzCourseCertificate extends Model
      * @var bool
      */
     public $timestamps = false;
-
-    // protected $dateFormat = 'U';
-        /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'award_date' => 'date:Y-m-d',
-    ];
-
-    protected $dateFormat = 'Y-m-d';
-
-    public function setDateAttribute( $value ) {
-        $this->attributes['award_date'] = (new Carbon($value))->format('d/m/y');
-      }
 }
