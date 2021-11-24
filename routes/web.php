@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view('/CerImport', 'certificateImport');
-Route::post('CerImport' , 'CertificateController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::view('CerImport', 'certificateImport');
+
+Route::view('CerImport_wo', 'certificateImport_wo');
+
+Route::post('CerImport/{type}' , 'CertificateController');
