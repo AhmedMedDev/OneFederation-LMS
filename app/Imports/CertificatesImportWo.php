@@ -19,7 +19,7 @@ class CertificatesImportWo implements ToModel, WithHeadingRow
         $award_date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['award_date'])->format('d-m-Y');
 
         return new SegwitzCourseCertificate([
-            'certificate_code'  => 'aaaaaaaaa',
+            'certificate_code'  => substr(md5(rand()), 0, 7),
             'student_name'      => $row['name'],
             'type'              => $row['type'],
             'course_name'       => $row['course'],

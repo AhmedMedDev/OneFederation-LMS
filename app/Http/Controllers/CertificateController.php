@@ -17,6 +17,7 @@ class CertificateController extends Controller
      */
     public function __invoke(Request $request, $type)
     {
+        dd($request->cerExcel);
         if ($type == 'wo') Excel::import(new CertificatesImportWo, $request->cerExcel);
 
         else Excel::import(new CertificatesImport, $request->cerExcel);
