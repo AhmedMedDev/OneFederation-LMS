@@ -16,7 +16,7 @@ class CertificatesImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        $award_date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['award_date'])->format('d-m-Y');
+        // $award_date = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['award_date'])->format('d-m-Y');
 
         return new SegwitzCourseCertificate([
             'certificate_code'  => $row['no'],
@@ -25,7 +25,7 @@ class CertificatesImport implements ToModel, WithHeadingRow
             'course_name'       => $row['course'],
             'trainer'           => $row['trainer'],
             'course_hours'      => $row['hours'],
-            'award_date'        => str_replace('-', '/', $award_date),
+            'award_date'        => $row['award_date'],
         ]);
     }
 }

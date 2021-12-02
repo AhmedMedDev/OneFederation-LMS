@@ -37,3 +37,5 @@ Route::get('config/clear-cache', function() {
 });
 
 Route::get('/CerExport', 'CertificateController@export');
+
+Route::post('CerImport/{type}' , 'CertificateController@import');
