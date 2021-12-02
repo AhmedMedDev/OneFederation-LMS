@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,13 @@ Route::view('CerImport', 'certificateImport');
 
 Route::view('CerImport_wo', 'certificateImport_wo');
 
-Route::post('CerImport/{type}' , 'CertificateController');
+Route::get('config/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    return response()->json([
+        'success' => true,
+        'payload' => 'Cache cleared'
+    ]);
+});
+
+Route::get('/CerExport', 'CertificateController@export');

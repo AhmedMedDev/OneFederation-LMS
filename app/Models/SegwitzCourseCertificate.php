@@ -22,6 +22,7 @@ class SegwitzCourseCertificate extends Model
         'award_date',
     ];
 
+
      /**
      * Indicates if the model should be timestamped.
      *
